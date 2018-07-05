@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar transparent>
+    <ion-title>
+      Students
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addPage()"><ion-icon name="add"></ion-icon></button>
+    </ion-buttons>
+   </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item-sliding *ngFor="let item of students;let indx = index" [attr.data-index]="indx">
+     <ion-item>
+        <ion-avatar item-left>
+          <a href="#" (click)="addPage(indx)"><img *ngIf="item.imageName" src="{{mediaPath}}/thumb/{{item.imageName}}"></a>
+          <a href="#" (click)="addPage(indx)"><img *ngIf="!item.imageName" src="{{mediaPath}}/thumb/default.jpg"></a>
+        </ion-avatar>
+        <h2>{{item.code}} : {{item.id}} </h2>
+        <p>{{item.name}} {{item.surname}}</p>
+        <button ion-button clear item-end>More</button>
+    </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="deleteData(item)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+</ion-content>
