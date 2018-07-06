@@ -5,14 +5,39 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>add</ion-title>
-  </ion-navbar>
-
+  <ion-toolbar transparent>
+      <ion-title>Student Data</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
+      </ion-buttons>
+     </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-item>
+    <p>{{imageUpload}}</p>
+    <P>{{id}}</P>
+  </ion-item>
+  <ion-item>
+    <ion-label>Code</ion-label>
+    <ion-input type="text" [(ngModel)]="code" name="code"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Surname</ion-label>
+    <ion-input type="text" [(ngModel)]="surname" name="surname"></ion-input>
+  </ion-item>
+  <ion-item>
+    <img src="{{imageURI}}" *ngIf="imageURI" width="300" name="imageURI"><br>
+    <button ion-button *ngIf="!imageURI" (click)="getImage()">Select Image</button>
+    <button ion-button *ngIf="!imageURI" (click)="captureImage()"><ion-icon name="camera"></ion-icon>Capture Image</button>
+    <button ion-button *ngIf="imageURI" (click)="clearImage()">Change Image</button>
+  </ion-item>
+  <ion-item>
+    <button ion-button block (click)="save()">Submit</button>
+  </ion-item>
 </ion-content>

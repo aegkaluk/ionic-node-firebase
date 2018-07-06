@@ -16,7 +16,7 @@ export class ServiceProvider {
     console.log('Hello ServiceProvider Provider');
   }
 
-  serverURL:String = "http://localhost:8081";
+  serverURL:String = "http://localhost:8080";
   mediaPath:string;
 
   getMediaPath(){
@@ -28,8 +28,22 @@ export class ServiceProvider {
 
   getData(){
     console.log("getData()");
-    return this.http.get(this.serverURL+'/show/students').map(res=> res);
+    return this.http.get(this.serverURL+'/show/students').map(res=> res );
 
+  }
+  addData(student){
+    console.log("addData()");
+    return this.http.post(this.serverURL+'/add/student',student).map(res => res );
+  }
+
+  updateData(student){
+    console.log("updateData()"+student.id);
+    return this.http.put(this.serverURL+'/update/student/'+student.id, student).map(res=>res);
+  }
+
+  deleteData(id){
+    console.log("deleteData() id:"+id);
+    return this.http.delete(this.serverURL+'/delete/student/'+id).map(res => res );
   }
 
   mapDataObj(obj){
