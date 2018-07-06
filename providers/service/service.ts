@@ -16,7 +16,8 @@ export class ServiceProvider {
     console.log('Hello ServiceProvider Provider');
   }
 
-  serverURL:String = "http://localhost:8080";
+  //serverURL:String = "http://localhost:8080";
+  serverURL:String = "https://phuketbikelover-199209.appspot.com";
   mediaPath:string;
 
   getMediaPath(){
