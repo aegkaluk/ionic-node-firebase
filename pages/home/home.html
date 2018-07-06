@@ -10,6 +10,11 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+
   <ion-list no-lines>
     <ion-item-sliding *ngFor="let item of students;let indx = index" [attr.data-index]="indx">
      <ion-item>

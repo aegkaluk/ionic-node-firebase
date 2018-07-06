@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController,ModalController,LoadingController  } from 'ionic-angular';
 import { ServiceProvider } from '../../providers/service/service';
 import { AddPage } from '../add/add';
-import { map } from 'rxjs/operator/map';
+
 
 @Component({
   selector: 'page-home',
@@ -60,7 +60,7 @@ export class HomePage {
               console.log("returnID:"+res.id);
               student.id = res.id;
               this.students.push(student);
-              //this.onLoad();
+              //this.onLoad(); //save bandwidth reload data
               this.dataService.presentToast("added: "+student.name);
               console.log(res);
             })
@@ -89,6 +89,16 @@ export class HomePage {
     })
 
   }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      this.onLoad();
+      refresher.complete();
+    }, 500);
+  }
+
 
 
 }
